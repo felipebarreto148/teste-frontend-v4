@@ -10,7 +10,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/icon',
     '@nuxt/eslint',
-    '@nuxt/ui',
     '@pinia/nuxt',
     '@nuxtjs/leaflet'
   ],

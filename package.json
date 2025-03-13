@@ -12,7 +12,6 @@
   "dependencies": {
     "@nuxt/eslint": "1.2.0",
     "@nuxt/icon": "1.11.0",
-    "@nuxt/ui": "3.0.0",
     "@nuxtjs/leaflet": "1.2.6",
     "@pinia/nuxt": "^0.10.1",
     "@tailwindcss/vite": "^4.0.13",
