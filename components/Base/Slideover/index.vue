@@ -24,7 +24,7 @@ function onClose() {
           class="flex items-center justify-between px-4 py-5 border-b border-gray-200"
         >
           <section class="flex flex-col gap-1">
-            <p class="font-semibold text-gray-800 text-base">{{ title }}</p>
+            <p class="font-semibold text-gray-800 text-lg">{{ title }}</p>
             <p v-if="subtitle" class="font-normal text-sm text-gray-500">
               {{ subtitle }}
             </p>
