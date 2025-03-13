@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/eslint',
     '@nuxt/ui',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@nuxtjs/leaflet'
   ],
   vite: {
     plugins: [
