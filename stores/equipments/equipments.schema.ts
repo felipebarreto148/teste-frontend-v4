@@ -6,6 +6,7 @@ export interface IState {
   models: IEquipmentModel[];
   positions: IEquipmentPosition[];
   stateHistory: IEquipmentStateHistory[];
+  selectedEquipment: IEquipmentsWithMoreInfos | null;
 }
 
 export interface IEquipmentsWithMoreInfos extends IEquipment {

@@ -14,7 +14,8 @@ export const useEquipmentsStore = defineStore('equipments', {
     models: [],
     positions: [],
     equipments: [],
-    stateHistory: []
+    stateHistory: [],
+    selectedEquipment: null
   }),
   getters: {
     equipmentsWithMoreInfos: (state): IEquipmentsWithMoreInfos[] => {

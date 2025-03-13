@@ -6,11 +6,10 @@ import type { IEquipmentsWithMoreInfos } from "~/stores/equipments/equipments.sc
 import { useEquipmentsStore } from "~/stores/equipments";
 const useEquipments = useEquipmentsStore();
 
-const { equipmentsWithMoreInfos } = storeToRefs(useEquipments);
+const { equipmentsWithMoreInfos, selectedEquipment } = storeToRefs(useEquipments);
 
 // Variables
 const detailsModalOpened = ref(false);
-const selectedEquipment: Ref<IEquipmentsWithMoreInfos | null> = ref(null);
 
 // Functions
 async function onMapReady() {
@@ -65,6 +64,8 @@ function openDetailsModal(equipment: IEquipmentsWithMoreInfos) {
       :title="selectedEquipment?.name || 'Equipamento'"
       subtitle="Visualize o histórico e o trajeto percorrido pelo equipamento."
       @close="detailsModalOpened = !detailsModalOpened"
-    />
+    >
+      <EquipmentDetails />
+    </BaseSlideover>
   </main>
 </template>
