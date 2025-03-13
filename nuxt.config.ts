@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/icon',
     '@nuxt/eslint',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@pinia/nuxt'
   ],
   vite: {
     plugins: [
