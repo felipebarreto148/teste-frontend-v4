@@ -63,7 +63,7 @@ function closeDetailsModal() {
   </LMap>
   <BaseSlideover
     v-model="detailsModalOpened"
-    :title="selectedEquipment?.name || 'Equipamento'"
+    :title="`${selectedEquipment?.name || 'Equipamento'} | ${selectedEquipment?.model?.name}`"
     subtitle="Visualize o histórico e o trajeto percorrido pelo equipamento."
     @close="closeDetailsModal"
   >
