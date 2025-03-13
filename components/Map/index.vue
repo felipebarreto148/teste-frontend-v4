@@ -27,6 +27,11 @@ function openDetailsModal(equipment: IEquipmentsWithMoreInfos) {
   selectedEquipment.value = equipment;
   detailsModalOpened.value = true;
 }
+
+function closeDetailsModal() {
+  selectedEquipment.value = null;
+  detailsModalOpened.value = false;
+}
 </script>
 
 <template>
@@ -60,7 +65,7 @@ function openDetailsModal(equipment: IEquipmentsWithMoreInfos) {
     v-model="detailsModalOpened"
     :title="selectedEquipment?.name || 'Equipamento'"
     subtitle="Visualize o histórico e o trajeto percorrido pelo equipamento."
-    @close="detailsModalOpened = !detailsModalOpened"
+    @close="closeDetailsModal"
   >
     <EquipmentDetails />
   </BaseSlideover>

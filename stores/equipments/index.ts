@@ -30,7 +30,8 @@ export const useEquipmentsStore = defineStore('equipments', {
           model
         }
       });
-    }
+    },
+    positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions,
   },
   actions: {
     async getEquipments(name?: string) {

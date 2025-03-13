@@ -3,7 +3,7 @@
 import { useEquipmentsStore } from "~/stores/equipments";
 const useEquipments = useEquipmentsStore();
 
-const { selectedEquipment, positions } = storeToRefs(useEquipments);
+const { positionsByEquipmentId } = storeToRefs(useEquipments);
 
 // Variables
 const headers = [
@@ -11,9 +11,6 @@ const headers = [
   { name: "lon", label: "Longitude" },
   { name: "date", label: "Data" }
 ]
-
-// Computeds
-const positionsByEquipmentId = computed(() => positions.value.filter(p => p.equipmentId === selectedEquipment.value?.id).pop()?.positions);
 
 // Functions
 </script>
