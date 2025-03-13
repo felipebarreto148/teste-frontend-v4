@@ -1,4 +1,14 @@
 <script lang="ts" setup>
+// Components
+import Multiselect from "vue-multiselect";
+import "vue-multiselect/dist/vue-multiselect.min.css";
+
+// Stores
+import { useEquipmentsStore } from "~/stores/equipments";
+const useEquipments = useEquipmentsStore();
+
+const { models, filters } = storeToRefs(useEquipments);
+
 // Variables
 const openFilters = ref(false);
 </script>
@@ -18,6 +28,14 @@ const openFilters = ref(false);
     title="Filtros"
     subtitle="Visualize e gerêncie seus filtros."
   >
-    teste
+    <!-- Filtro por módulos -->
+    <Multiselect
+      v-model="filters.models"
+      :options="models.map(m => m.name)"
+      placeholder="Modelos"
+      :multiple="true"
+      :clear-on-select="false"
+      :allow-empty="true"
+    />
   </BaseSlideover>
 </template>

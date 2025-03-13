@@ -35,7 +35,7 @@ function onClose() {
             @click="onClose"
           />
         </header>
-        <section class="px-4 py-5 overflow-y-auto">
+        <section class="px-4 py-5 h-full overflow-y-auto">
           <slot />
         </section>
         <footer v-if="$slots.footer" class="px-4 py-5 border-t border-gray-200 sticky bottom-0 w-full h-fit">

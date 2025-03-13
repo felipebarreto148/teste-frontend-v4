@@ -12,7 +12,7 @@ const nameToSearch = ref("");
 
 // Functions
 const handleInput = debounce(async () => {
-  await useEquipments.getEquipments(nameToSearch.value);
+  await useEquipments.filterEquipments({ name: nameToSearch.value });
 }, 500);
 </script>
 

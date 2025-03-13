@@ -6,7 +6,7 @@ import positions from "@/data/equipmentPositionHistory.json";
 import statesHistory from "@/data/equipmentStateHistory.json";
 
 // Types
-import type { IEquipmentsWithMoreInfos, IState } from "./equipments.schema";
+import type { IEquipmentsWithMoreInfos, IFilters, IState } from "./equipments.schema";
 
 export const useEquipmentsStore = defineStore('equipments', {
   state: (): IState => ({
@@ -15,7 +15,11 @@ export const useEquipmentsStore = defineStore('equipments', {
     positions: [],
     equipments: [],
     stateHistory: [],
-    selectedEquipment: null
+    selectedEquipment: null,
+    filters: {
+      name: "",
+      models: [],
+    }
   }),
   getters: {
     equipmentsWithMoreInfos: (state): IEquipmentsWithMoreInfos[] => {
@@ -29,13 +33,18 @@ export const useEquipmentsStore = defineStore('equipments', {
           last_position,
           model
         }
-      });
+      }).filter(eqp => {
+        if (state.filters.name && !eqp.name.toLocaleLowerCase().includes(state.filters.name.toLocaleLowerCase())) return false;
+        if (state.filters?.models?.length && !state.filters.models.includes(eqp.model!.name)) return false;
+
+        return true;
+      })
     },
     positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions,
   },
   actions: {
-    async getEquipments(name?: string) {
-      this.equipments = name ? equipments.filter(eqp => eqp.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) : equipments;
+    async getEquipments() {
+      this.equipments = equipments;
     },
     async getStates() {
       this.states = states;
@@ -49,5 +58,8 @@ export const useEquipmentsStore = defineStore('equipments', {
     async getEquipmentStateHistory() {
       this.stateHistory = statesHistory;
     },
+    async filterEquipments(filters?: IFilters) {
+      this.filters = filters || {};
+    }
   }
 })
