@@ -4,14 +4,21 @@ import type { IProps } from "./slideover.schema";
 
 // Composables
 const model = defineModel({ type: Boolean, default: false });
+const emit = defineEmits(['close'])
 defineProps<IProps>();
+
+// Functions
+function onClose() {
+  emit("close");
+  model.value = false;
+}
 </script>
 
 <template>
   <transition name="fade" mode="out-in" appear>
     <teleport v-if="model" to="body">
       <aside
-        class="absolute flex flex-col right-0 top-0 size-full lg:w-1/3 z-99999999 bg-white shadow border-l border-l-gray-300"
+        class="absolute flex flex-col right-0 top-0 size-full lg:max-w-[50vw] z-99999999 bg-white shadow border-l border-l-gray-300"
       >
         <header
           class="flex items-center justify-between px-4 py-5 border-b border-gray-200"
@@ -25,7 +32,7 @@ defineProps<IProps>();
           <Icon
             name="streamline:delete-1-solid"
             class="cursor-pointer"
-            @click="model = false"
+            @click="onClose"
           />
         </header>
         <section class="px-4 py-5">
