@@ -12,6 +12,12 @@ const { equipmentsWithMoreInfos, selectedEquipment } =
 // Variables
 const detailsModalOpened = ref(false);
 
+const state_icons: Record<string, string> = {
+  'Operando': '/icons/marker-green.png',
+  'Parado': '/icons/marker-yellow.png',
+  'Manutenção': '/icons/marker-red.png',
+}
+
 // Functions
 async function onMapReady() {
   await Promise.all([
@@ -59,7 +65,9 @@ function closeDetailsModal() {
       :key="index"
       :lat-lng="[equipment?.last_position?.lat, equipment?.last_position?.lon]"
       @click="openDetailsModal(equipment)"
-    />
+    >
+      <LIcon :icon-url="state_icons[equipment.last_state.type.name as keyof typeof state_icons]" :icon-size="[40, 40]" />
+    </LMarker>
   </LMap>
   <BaseSlideover
     v-model="detailsModalOpened"

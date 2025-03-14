@@ -13,9 +13,16 @@ export interface IState {
 export interface IEquipmentsWithMoreInfos extends IEquipment {
   model?: IEquipmentModel;
   last_position: IPosition;
+  last_state: ILastState;
 }
 
 export interface IFilters {
   name?: string;
   models?: string[];
+}
+
+export interface ILastState {
+  date: string;
+  equipmentStateId: string;
+  type: IEquipmentState;
 }

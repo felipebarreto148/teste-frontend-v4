@@ -25,13 +25,26 @@ export const useEquipmentsStore = defineStore('equipments', {
     equipmentsWithMoreInfos: (state): IEquipmentsWithMoreInfos[] => {
       return state.equipments.map(eqp => {
         // Recupera a última posição do equipamento.
-        const last_position = state.positions.filter(p => p.equipmentId === eqp.id).pop()!.positions[positions.length - 1];
+        const last_position = state.positions.filter(p => p.equipmentId === eqp.id).pop()!.positions.slice(-1)[0];
         // Recupera o modelo do equipamento.
         const model = state.models.filter(m => m.id === eqp.equipmentModelId).pop();
+        // Recupera o último estado do equipamento.
+        const last_state =
+            state.stateHistory
+              .filter(sh => sh.equipmentId === eqp.id)
+              .pop()!.states.slice(-1)[0];
+
+        const last_state_type = state.states.find(s => s.id === last_state!.equipmentStateId);
+
         return {
           ...eqp,
           last_position,
-          model
+          model,
+          last_state: {
+            date: last_state.date ?? "", // Usa string vazia como fallback
+            equipmentStateId: last_state.equipmentStateId ?? "", // Usa string vazia como fallback
+            type: last_state_type ?? { id: "", name: "Desconhecido", color: "#000000" } // Fallback para `type`
+          }
         }
       }).filter(eqp => {
         if (state.filters.name && !eqp.name.toLocaleLowerCase().includes(state.filters.name.toLocaleLowerCase())) return false;
