@@ -7,7 +7,7 @@ import "vue-multiselect/dist/vue-multiselect.min.css";
 import { useEquipmentsStore } from "~/stores/equipments";
 const useEquipments = useEquipmentsStore();
 
-const { models, filters } = storeToRefs(useEquipments);
+const { models, filters, states } = storeToRefs(useEquipments);
 
 // Variables
 const openFilters = ref(false);
@@ -28,14 +28,31 @@ const openFilters = ref(false);
     title="Filtros"
     subtitle="Visualize e gerêncie seus filtros."
   >
-    <!-- Filtro por módulos -->
-    <Multiselect
-      v-model="filters.models"
-      :options="models.map(m => m.name)"
-      placeholder="Modelos"
-      :multiple="true"
-      :clear-on-select="false"
-      :allow-empty="true"
-    />
+    <section class="flex flex-col gap-5">
+      <!-- Filtro por módulos -->
+      <label>
+        <p class="font-semibold text-gray-700">Modelos</p>
+        <Multiselect
+          v-model="filters.models"
+          :options="models.map((m) => m.name)"
+          placeholder="Selecione os modelos que deseja filtrar"
+          :multiple="true"
+          :clear-on-select="false"
+          :allow-empty="true"
+        />
+      </label>
+      <!-- Filtro por estado -->
+      <label>
+        <p class="font-semibold text-gray-700">Estados</p>
+        <Multiselect
+          v-model="filters.states"
+          :options="states.map((m) => m.name)"
+          placeholder="Selecione os estados que deseja filtrar"
+          :multiple="true"
+          :clear-on-select="false"
+          :allow-empty="true"
+        />
+      </label>
+    </section>
   </BaseSlideover>
 </template>

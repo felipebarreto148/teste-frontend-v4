@@ -19,6 +19,7 @@ export interface IEquipmentsWithMoreInfos extends IEquipment {
 export interface IFilters {
   name?: string;
   models?: string[];
+  states?: string[];
 }
 
 export interface ILastState {

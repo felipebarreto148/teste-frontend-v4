@@ -19,6 +19,7 @@ export const useEquipmentsStore = defineStore('equipments', {
     filters: {
       name: "",
       models: [],
+      states: [],
     }
   }),
   getters: {
@@ -49,11 +50,13 @@ export const useEquipmentsStore = defineStore('equipments', {
       }).filter(eqp => {
         if (state.filters.name && !eqp.name.toLocaleLowerCase().includes(state.filters.name.toLocaleLowerCase())) return false;
         if (state.filters?.models?.length && !state.filters.models.includes(eqp.model!.name)) return false;
+        if (state.filters?.states?.length && !state.filters.states.includes(eqp.last_state.type.name)) return false;
 
         return true;
       })
     },
-    positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions,
+    positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions.reverse(),
+    statesHistoryByEquipmentId: (state) => state.stateHistory.filter(sh => sh.equipmentId === state?.selectedEquipment?.id).pop()?.states.map(s => ({ ...s, ...state.states.find(st => st.id === s.equipmentStateId)})).reverse(),
   },
   actions: {
     async getEquipments() {
