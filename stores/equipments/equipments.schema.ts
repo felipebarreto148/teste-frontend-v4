@@ -11,7 +11,7 @@ export interface IState {
 }
 
 export interface IEquipmentsWithMoreInfos extends IEquipment {
-	model: IEquipmentModel;
+	model?: IEquipmentModel;
 	last_position: IPosition;
 	last_state: ILastState;
 }

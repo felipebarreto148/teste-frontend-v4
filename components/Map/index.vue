@@ -53,7 +53,7 @@ function closeDetailsModal() {
 }
 
 function getEquipmentIcon(equipment: IEquipmentsWithMoreInfos) {
-	return equipment_icons[equipment.model.name]?.[equipment.last_state.type.name];
+	return equipment_icons[equipment!.model!.name]?.[equipment.last_state.type.name];
 };
 </script>
 
