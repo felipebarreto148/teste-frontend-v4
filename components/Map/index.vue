@@ -12,10 +12,22 @@ const { equipmentsWithMoreInfos, selectedEquipment } =
 // Variables
 const detailsModalOpened = ref(false);
 
-const state_icons: Record<string, string> = {
-  'Operando': '/icons/marker-green.png',
-  'Parado': '/icons/marker-yellow.png',
-  'Manutenção': '/icons/marker-red.png',
+const equipment_icons: Record<string, Record<string, string>> = {
+  "Caminhão de carga": {
+    "Operando": "/icons/truck_green.svg",
+    "Parado": "/icons/truck_yellow.svg",
+    "Manutenção": "/icons/truck_red.svg",
+  },
+  "Harvester": {
+    "Operando": "/icons/crane_green.svg",
+    "Parado": "/icons/crane_yellow.svg",
+    "Manutenção": "/icons/crane_red.svg",
+  },
+  "Garra traçadora": {
+    "Operando": "/icons/excavator_green.svg",
+    "Parado": "/icons/excavator_yellow.svg",
+    "Manutenção": "/icons/excavator_red.svg",
+  },
 }
 
 // Functions
@@ -38,13 +50,17 @@ function closeDetailsModal() {
   selectedEquipment.value = null;
   detailsModalOpened.value = false;
 }
+
+function getEquipmentIcon(equipment: IEquipmentsWithMoreInfos) {
+  return equipment_icons[equipment.model.name]?.[equipment.last_state.type.name];
+};
 </script>
 
 <template>
   <LMap
     ref="map"
     class="size-full absolute top-0 left-0"
-    :zoom="6"
+    :zoom="10"
     :center="[-19.126536, -45.947756]"
     :use-global-leaflet="false"
     :zoom-control="false"
@@ -66,7 +82,7 @@ function closeDetailsModal() {
       :lat-lng="[equipment?.last_position?.lat, equipment?.last_position?.lon]"
       @click="openDetailsModal(equipment)"
     >
-      <LIcon :icon-url="state_icons[equipment.last_state.type.name as keyof typeof state_icons]" :icon-size="[40, 40]" />
+      <LIcon :icon-url="getEquipmentIcon(equipment)" :icon-size="[40, 40]" />
     </LMarker>
   </LMap>
   <BaseSlideover
