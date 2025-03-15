@@ -11,9 +11,9 @@
 
   <section>
   <!-- Node -->
-  <img src="https://img.shields.io/static/v1?label=NODE&message=22.14.0&color=8a03c8&style=for-the-badge&logo=nodedotjs"/>
-  <img src="https://img.shields.io/static/v1?label=PNPM&message=10.4.1&color=8a03c8&style=for-the-badge&logo=pnpm"/>
-  <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=8a03c8&style=for-the-badge"/>
+  <img src="https://img.shields.io/static/v1?label=NODE&message=22.14.0&color=003184&style=for-the-badge&logo=nodedotjs"/>
+  <img src="https://img.shields.io/static/v1?label=PNPM&message=10.4.1&color=003184&style=for-the-badge&logo=pnpm"/>
+  <img src="https://img.shields.io/static/v1?label=LICENSE&message=MIT&color=003184&style=for-the-badge"/>
   </section>
 
 </div>
@@ -53,6 +53,7 @@ http://localhost:3000
 ```
 
 <h2>Funcionalidades</h2>
+
 - [x] Mostrar os equipamentos no mapa.  
 - [x] Permitir filtro pelo nome dos equipamentos.
 - [x] Permitir filtro pelo estado atual dos equipamentos.
