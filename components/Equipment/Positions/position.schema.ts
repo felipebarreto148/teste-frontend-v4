@@ -1,5 +1,5 @@
-import type { IPosition } from "~/@types";
+import type { IPosition } from '~/@types';
 
 export interface IProps {
-  position: IPosition;
+	position: IPosition;
 }
