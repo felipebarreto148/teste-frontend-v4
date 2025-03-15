@@ -55,8 +55,8 @@ export const useEquipmentsStore = defineStore('equipments', {
         return true;
       })
     },
-    positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions.reverse(),
-    statesHistoryByEquipmentId: (state) => state.stateHistory.filter(sh => sh.equipmentId === state?.selectedEquipment?.id).pop()?.states.map(s => ({ ...s, ...state.states.find(st => st.id === s.equipmentStateId)})).reverse(),
+    positionsByEquipmentId: (state) => state.positions.filter(p => p.equipmentId === state?.selectedEquipment?.id).pop()?.positions,
+    statesHistoryByEquipmentId: (state) => state.stateHistory.filter(sh => sh.equipmentId === state?.selectedEquipment?.id).pop()?.states.map(s => ({ ...s, ...state.states.find(st => st.id === s.equipmentStateId)})),
   },
   actions: {
     async getEquipments() {
