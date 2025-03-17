@@ -45,11 +45,11 @@ const openFilters = ref(false);
 			</label>
 			<!-- Filtro por estado -->
 			<label>
-				<p class="font-semibold text-gray-700">Estados</p>
+				<p class="font-semibold text-gray-700">Status</p>
 				<Multiselect
 					v-model="filters.states"
 					:options="states.map((m) => m.name)"
-					placeholder="Selecione os estados que deseja filtrar"
+					placeholder="Selecione os status que deseja filtrar"
 					:multiple="true"
 					:clear-on-select="false"
 					:allow-empty="true"
