@@ -16,6 +16,7 @@ const openFilters = ref(false);
 
 <template>
 	<button
+		aria-label="Filtros"
 		class="grid place-items-center p-3 rounded-full bg-white cursor-pointer shadow outline-none"
 		@click="openFilters = !openFilters"
 	>

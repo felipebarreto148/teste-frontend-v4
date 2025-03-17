@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // Utils
-import { debounce } from 'lodash';
+import _ from 'lodash';
 
 // Stores
 import { useEquipmentsStore } from '~/stores/equipments';
@@ -11,7 +11,7 @@ const useEquipments = useEquipmentsStore();
 const nameToSearch = ref('');
 
 // Functions
-const handleInput = debounce(async () => {
+const handleInput = _.debounce(async () => {
 	await useEquipments.filterEquipments({ name: nameToSearch.value });
 }, 500);
 </script>
