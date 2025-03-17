@@ -65,3 +65,16 @@ http://localhost:3000
 - [ ] Mostrar o percentual de produtividade por equipamento.
 - [x] Mostrar informações dos equipamentos ao passar o mouse no ícone do mapa.
 - [x] Diferenciar os equipamentos no mapa.
+
+<h2>Estrutura</h2>
+
+```
+├── assets/          # Estilos globais
+├── components/      # Componentes Vue reutilizáveis
+├── plugins/         # Plugins Vue/Nuxt (ex: Moment)
+├── public/          # Servir os ativos estáticos
+├── store/           # Gerenciamento de estado (Pinia)
+├── nuxt.config.ts   # Configurações do Nuxt
+├── eslint.config.js # Configurações do Lint
+└── package.json     # Dependências e scripts
+```
