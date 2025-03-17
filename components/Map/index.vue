@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+// Core
+import moment from 'moment';
+
 // Types
 import type { IEquipmentsWithMoreInfos } from '~/stores/equipments/equipments.schema';
 
@@ -87,6 +90,18 @@ function getEquipmentIcon(equipment: IEquipmentsWithMoreInfos) {
 				:icon-url="getEquipmentIcon(equipment)"
 				:icon-size="[40, 40]"
 			/>
+			<LTooltip>
+				<section class="flex flex-col">
+					<p class="text-base text-gray-700 font-semibold mb-4 gap-2">
+						{{ equipment.name }}
+					</p>
+					<p>
+						Status: <strong :style="{ color: equipment.last_state.type.color }">{{ equipment.last_state.type.name }}</strong>
+					</p>
+					<p>Modelo: <strong>{{ equipment.model.name }}</strong></p>
+					<p>Data: <strong>{{ moment(equipment.last_state.date).format("DD/MM/YYYY HH:mm") }}</strong></p>
+				</section>
+			</LTooltip>
 		</LMarker>
 	</LMap>
 	<BaseSlideover
