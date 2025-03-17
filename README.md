@@ -63,4 +63,5 @@ http://localhost:3000
 - [x] Mostrar o histórico de estados do equipamento.
 - [ ] Mostrar o lucro por equipamento.
 - [ ] Mostrar o percentual de produtividade por equipamento.
+- [x] Mostrar informações dos equipamentos ao passar o mouse no ícone do mapa.
 - [x] Diferenciar os equipamentos no mapa.
